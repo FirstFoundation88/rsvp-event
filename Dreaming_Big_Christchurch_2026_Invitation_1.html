@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreaming Big Christchurch 2026 | You're Invited</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B3E;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --cream: #F9F5EE;
+    --warm-white: #FFFDF9;
+    --text-dark: #1A1A2E;
+    --text-mid: #4A4A6A;
+    --text-light: #8A8AAA;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 20%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 80%, rgba(201,168,76,0.07) 0%, transparent 50%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-lines::before,
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .hero-lines::before {
+    width: 700px; height: 700px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 6s ease-in-out infinite;
+  }
+
+  .hero-lines::after {
+    width: 1100px; height: 1100px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 6s ease-in-out infinite 1.5s;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.4; transform: translate(-50%,-50%) scale(1); }
+    50% { opacity: 0.1; transform: translate(-50%,-50%) scale(1.04); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fade-up 0.8s ease forwards 0.3s;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(72px, 12vw, 140px);
+    line-height: 0.9;
+    color: var(--warm-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fade-up 0.9s ease forwards 0.5s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 28px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fade-up 0.9s ease forwards 0.7s;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fade-up 0.9s ease forwards 0.9s;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .hero-cta svg { transition: transform 0.3s ease; }
+  .hero-cta:hover svg { transform: translateY(3px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fade-up 1s ease forwards 1.4s;
+  }
+
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scroll-drop 2s ease-in-out infinite 2s;
+  }
+
+  @keyframes scroll-drop {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 40px; }
+
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .body-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-mid);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  /* ── EVENT DETAILS ── */
+  .details-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .details-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  .details-section .section-title { color: var(--warm-white); }
+  .details-section .body-text { color: rgba(255,255,255,0.55); }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .detail-item {
+    padding: 32px 28px;
+    border: 1px solid rgba(201,168,76,0.1);
+    transition: background 0.3s ease;
+  }
+
+  .detail-item:hover { background: rgba(201,168,76,0.05); }
+
+  .detail-icon {
+    width: 36px; height: 36px;
+    margin-bottom: 16px;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .detail-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--warm-white);
+    line-height: 1.3;
+  }
+
+  .detail-item.full-width { grid-column: 1 / -1; }
+
+  /* ── WHAT TO EXPECT ── */
+  .expect-section { background: var(--warm-white); }
+
+  .expect-list { margin-top: 40px; }
+
+  .expect-item {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    transition: transform 0.2s ease;
+  }
+
+  .expect-item:hover { transform: translateX(6px); }
+  .expect-item:last-child { border-bottom: none; }
+
+  .expect-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    min-width: 50px;
+    flex-shrink: 0;
+  }
+
+  .expect-content { padding-top: 6px; }
+
+  .expect-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .expect-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    font-weight: 300;
+  }
+
+  /* ── RSVP ── */
+  .rsvp-section {
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .rsvp-section .section-label { justify-content: center; }
+  .rsvp-section .section-label::after { display: none; }
+
+  .rsvp-deadline {
+    display: inline-block;
+    margin: 32px auto;
+    padding: 20px 48px;
+    border: 1px solid var(--gold);
+    position: relative;
+  }
+
+  .rsvp-deadline::before {
+    content: 'RSVP DEADLINE';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 12px;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+  }
+
+  .rsvp-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--navy);
+    display: block;
+  }
+
+  .rsvp-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 48px;
+  }
+
+  .rsvp-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto 48px;
+    text-align: left;
+  }
+
+  .rsvp-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 24px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .rsvp-option:hover { border-color: var(--gold); background: #fffbf2; }
+
+  .rsvp-opt-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 24px;
+  }
+
+  .rsvp-opt-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.5;
+    padding-top: 4px;
+  }
+
+  .rsvp-opt-text strong { display: block; font-weight: 500; margin-bottom: 2px; }
+  .rsvp-opt-text span { font-size: 12px; color: var(--text-light); font-weight: 300; }
+
+  .contact-line {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 20px;
+  }
+
+  .contact-line a { color: var(--gold); text-decoration: none; }
+  .contact-line a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--warm-white);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .footer-org {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 28px;
+  }
+
+  .footer-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(201,168,76,0.4);
+    margin: 0 auto 20px;
+  }
+
+  .footer-fine {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    section { padding: 70px 24px; }
+    .details-grid { grid-template-columns: 1fr; }
+    .detail-item.full-width { grid-column: 1; }
+    .hero { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <p class="hero-eyebrow">First Foundation · OnBeingBold · Christchurch 2026</p>
+  <h1 class="hero-title">
+    Dreaming
+    <em>Big</em>
+  </h1>
+  <p class="hero-subtitle">Tuesday 11 August 2026 · ANZ Christchurch</p>
+  <a href="#details" class="hero-cta">
+    View Details
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M6 2v8M2 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <p class="section-label">About the Event</p>
+    <h2 class="section-title">A day designed<br>for <em>wāhine</em> who dream big</h2>
+    <p class="body-text">
+      Dreaming Big is a full-day event that brings together young New Zealand women with an inspiring group of senior businesswomen, leaders, and changemakers — all in one room, ready to share their stories.
+    </p>
+    <p class="body-text">
+      Hosted at ANZ Christchurch, this is a rare opportunity to hear real career journeys, ask the questions you've always wanted to ask, and connect with women who have navigated challenges, taken risks, and built extraordinary lives.
+    </p>
+    <p class="body-text">
+      You've been personally invited by First Foundation because we believe you have the potential, the curiosity, and the drive to make the most of a day like this.
+    </p>
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section class="details-section" id="details">
+  <div class="container">
+    <p class="section-label" style="color: var(--gold);">Event Details</p>
+    <h2 class="section-title">Everything you<br>need to know</h2>
+    <div class="details-grid">
+      <div class="detail-item">
+        <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+        </svg>
+        <p class="detail-label">Date</p>
+        <p class="detail-value">Tuesday 11 August 2026</p>
+      </div>
+      <div class="detail-item">
+        <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        <p class="detail-label">Time</p>
+        <p class="detail-value">9:15am arrival<br><span style="font-size:16px;opacity:0.7">9:30am start — 3:15pm finish</span></p>
+      </div>
+      <div class="detail-item full-width">
+        <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 22s-8-5.5-8-12a8 8 0 0116 0c0 6.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <p class="detail-label">Venue</p>
+        <p class="detail-value">ANZ Christchurch<br><span style="font-size:16px;opacity:0.7">ANZ Bank, Christchurch, Ōtautahi</span></p>
+      </div>
+      <div class="detail-item">
+        <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M12 6v6l3 3"/>
+        </svg>
+        <p class="detail-label">Cost</p>
+        <p class="detail-value">Free<br><span style="font-size:15px;opacity:0.7">Morning tea, lunch & afternoon tea included</span></p>
+      </div>
+      <div class="detail-item">
+        <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-8 0v2"/>
+        </svg>
+        <p class="detail-label">Transport & Dress</p>
+        <p class="detail-value">Transport vouchers provided<br><span style="font-size:15px;opacity:0.7">Dress code: Smart casual</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect-section">
+  <div class="container">
+    <p class="section-label">On the Day</p>
+    <h2 class="section-title">What to <em>expect</em></h2>
+    <div class="expect-list">
+      <div class="expect-item">
+        <span class="expect-number">01</span>
+        <div class="expect-content">
+          <p class="expect-heading">Talks & Q&As with Senior Business Leaders</p>
+          <p class="expect-desc">Hear from some of New Zealand's most accomplished businesswomen. Ask the questions that matter to you in an open, relaxed Q&A format.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <span class="expect-number">02</span>
+        <div class="expect-content">
+          <p class="expect-heading">Entrepreneurship — Real Journeys, Real Stories</p>
+          <p class="expect-desc">Three New Zealand entrepreneurs share how they built their ventures, what they wish they'd known, and what it really takes to back yourself.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <span class="expect-number">03</span>
+        <div class="expect-content">
+          <p class="expect-heading">Financial Wellbeing Session</p>
+          <p class="expect-desc">Practical, honest conversation about money — building financial confidence and independence from the ground up.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <span class="expect-number">04</span>
+        <div class="expect-content">
+          <p class="expect-heading">Inspiring Young Women Leaders Panel</p>
+          <p class="expect-desc">A discussion with three young New Zealand women who are already making their mark — and not that much older than you.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <span class="expect-number">05</span>
+        <div class="expect-content">
+          <p class="expect-heading">Personal Brand & the Online World</p>
+          <p class="expect-desc">How to navigate the digital space with confidence, stay safe online, and start building a personal brand that opens doors.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <span class="expect-number">06</span>
+        <div class="expect-content">
+          <p class="expect-heading">Ask Anything — Open Floor</p>
+          <p class="expect-desc">A rare session where you can ask the entire OnBeingBold panel anything you like. No question is too big or too small.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section" id="rsvp">
+  <div class="container">
+    <p class="section-label">Confirm Your Place</p>
+    <h2 class="section-title">We'd love to<br>have you there</h2>
+    <p class="body-text" style="max-width:520px;margin:0 auto 32px;">
+      Places are limited. Reply to this invitation by email to let us know if you can make it.
+    </p>
+
+    <div class="rsvp-deadline">
+      <span class="rsvp-date">Monday 27 July</span>
+    </div>
+
+    <p class="rsvp-note">Please respond with one of the options below</p>
+
+    <div class="rsvp-options">
+      <div class="rsvp-option">
+        <span class="rsvp-opt-num">1</span>
+        <div class="rsvp-opt-text">
+          <strong>Yes — I'm keen to attend</strong>
+          <span>Count me in for Tuesday 16 June 2026</span>
+        </div>
+      </div>
+      <div class="rsvp-option">
+        <span class="rsvp-opt-num">2</span>
+        <div class="rsvp-opt-text">
+          <strong>I'm interested — I'll confirm soon</strong>
+          <span>I need to check a few things first</span>
+        </div>
+      </div>
+      <div class="rsvp-option">
+        <span class="rsvp-opt-num">3</span>
+        <div class="rsvp-opt-text">
+          <strong>Unfortunately I'm not available</strong>
+          <span>Thanks for the invitation — I can't make it this time</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="contact-line">
+      Questions? Get in touch with Isaac at First Foundation.<br>
+      <a href="mailto:info@firstfoundation.org.nz">info@firstfoundation.org.nz</a>
+    </p>
+  </div>
+</section>
+
+<!-- SCHOLAR CONTACT LIST -->
+<section style="background: var(--navy); padding: 80px 40px;">
+  <div class="container">
+    <p class="section-label" style="color: var(--gold);">Internal Reference</p>
+    <h2 class="section-title" style="color: var(--warm-white); margin-bottom: 8px;">Christchurch Year 13 Scholar <em>Contact List</em></h2>
+    <p style="font-size:13px; color: rgba(255,255,255,0.4); margin-bottom: 36px; font-weight:300;">For internal use only — 3 Christchurch &amp; West Coast female Year 13 scholars invited to Dreaming Big 2026</p>
+    <div style="overflow-x: auto;">
+      <table style="width:100%; border-collapse: collapse; font-size:14px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding: 12px 16px; border-bottom: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-weight:500; letter-spacing:0.08em; font-size:11px; text-transform:uppercase;">Name</th>
+            <th style="text-align:left; padding: 12px 16px; border-bottom: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-weight:500; letter-spacing:0.08em; font-size:11px; text-transform:uppercase;">Email</th>
+            <th style="text-align:left; padding: 12px 16px; border-bottom: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-weight:500; letter-spacing:0.08em; font-size:11px; text-transform:uppercase;">Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--warm-white); font-weight:300;">Hegby Ronald</td>
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.55);">hegbyr@gmail.com</td>
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.55);">027 424 3303</td>
+          </tr>
+          <tr style="background: rgba(255,255,255,0.02);">
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--warm-white); font-weight:300;">Danica Neels</td>
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.55);">danicaneels2008@gmail.com</td>
+            <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.55);">022 625 9122</td>
+          </tr>
+          <tr>
+            <td style="padding: 14px 16px; color: var(--warm-white); font-weight:300;">Lily Gamble-Smith <span style='font-size:11px; color: var(--gold); opacity:0.8;'>(West Coast)</span></td>
+            <td style="padding: 14px 16px; color: rgba(255,255,255,0.55);">lilygslilygs@gmail.com</td>
+            <td style="padding: 14px 16px; color: rgba(255,255,255,0.55);">027 399 5846</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">First Foundation</p>
+  <p class="footer-org">Dreaming Big Christchurch · August 2026</p>
+  <div class="footer-divider"></div>
+  <p class="footer-fine">This invitation is personal to you. For questions, contact your First Foundation cohort lead.</p>
+</footer>
+
+</body>
+</html>
